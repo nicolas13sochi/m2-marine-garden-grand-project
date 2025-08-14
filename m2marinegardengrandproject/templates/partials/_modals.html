@@ -1,0 +1,741 @@
+{% load static model_extras data_extras %}
+{% load wagtailimages_tags wagtailcore_tags %}
+{% load widget_tweaks %}
+ 
+
+    <!-- This is the modal -->
+    <div id="getCatalog" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-2">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="">
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="catalogHero"  hidden/>
+                    <input name="form_name" type="text" value="Получить каталог"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="getAparmentPlan" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-2">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="">
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="" hidden/>
+                    <input name="form_name" type="text" value="" hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="trustManagement" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-2">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="">
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="trustManagementBlock" hidden/>
+                    <input name="form_name" type="text" value="Доверительное управление" hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="downloadDocuments" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-2">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="">
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="downloadDocumentsBlock" hidden/>
+                    <input name="form_name" type="text" value="Скачать документы" hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="liter1" uk-modal class="modal-type-3">
+        <div class="uk-modal-dialog uk-modal-body ">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div id="plan-container" style="overflow: hidden;">
+                <img src="{% static 'img/hotel/floor/floor2.webp' %}" style="width: 100%; height: auto;" alt="">
+                <img src="{% static 'img/hotel/floor/floor3.webp' %}" style="width: 100%; height: auto;" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tile1" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/1-1.webp' %}" 
+                        alt="Описание" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+
+                <h2 class="uk-modal-title modal-title">О комплексе</h2>
+                <p>С гордостью представляем масштабный и впечатляющий Grand Hotel «Marine Garden Sochi» 5*, который расположился на зелёной вершине района Хоста города Сочи. Дорогих гостей ждут уникальные впечатления и эксклюзивность в каждой детали: дизайнерский вестибюль с двойным светом площадью более 1000 кв.м., роскошный лобби для особого отношения к важным персонам, итальянский и европейский ресторан с лучшими гастрономическими тенденциями и кулинарными концепциями, торговая галерея с ювелирными магазинами, пространства для проведения деловых и праздничных мероприятий, центр красоты и оздоровительный СПА-комплекс. Мы совершенствовали стандарты гостеприимства и разработали сервис наивысшего уровня, который никогда не повторялся. Отключите реальность и насладитесь незабываемым отдыхом в Грант Отель Сочи. Застройщик комплекса ООО СЗ "Капитал".</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="О комплексе"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile2" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+                    <div class="img">
+                        <img 
+                            src="{% static 'img/hotel/tile/2.webp' %}" 
+                            alt="ФЗ-214" 
+                            loading="lazy" 
+                            width="1200" 
+                            height="600"
+                        >
+                    </div>
+                    
+
+
+                <h2 class="uk-modal-title modal-title">ФЗ-214</h2>
+                <p>Застройщик гостиничного комплекса СЗ "Капитал". За 18 лет работы мы зарекомендовали себя, как сильный  игрок на рынке недвижимость в ЮФО.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="ФЗ-214"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile3" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                    <div class="img">
+                        <img 
+                            src="{% static 'img/hotel/tile/3.webp' %}" 
+                            alt="ФЗ-214" 
+                            loading="lazy" 
+                            width="1200" 
+                            height="600"
+                        >
+                    </div>
+
+                    
+
+
+                <h2 class="uk-modal-title modal-title">Архитектура комплекса</h2>
+                <p>Гранд Отель «Marine Garden Sochi» 5* будет достопримечательностью и одним из самых известных образцов современной архитектуры города Сочи. Ландшафтная организация территории, выразительность уникальных элементов архитектуры, внешний облик сооружения и ночная подцветка фасадов выделяет его из окружающей застройки района Хоста. Наше решение по форме здание вписывается в общую концепцию курорта, рождая ощущение вневременной гармонии, простора и воздуха, позволяя наслаждаться великолепнейшими видами на море.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Архитектура комплекса"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile4" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/4.webp' %}" 
+                        alt="Концепция интерьеров" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+
+
+                <h2 class="uk-modal-title modal-title">Концепция интерьеров</h2>
+                <p>При разработке концепции интерьеров Grand Hotel «Marine Garden Sochi» дизайнерам была поставлена не простая задача - создать продолжение архитектуры здания и незабываемую концепцию, которую город Сочи еще не видел. Команда «KASPARY INTERIORS» создала интерьеры с настоящим воплощением красоты, эстетичными дизайнерскими решениями, высочайшим уровнем комфорта и яркой индивидуальностью. В основе концепции — природа и главные ценности знаменитого российского курорта - морское побережье и горы. Используемые материалы — натуральный мрамор, премиальные породы дерева, тонированные зеркала, рифленые стекла, латунь, медь, оникс и кварцит, темные и яркие элементы, переплетение оттенков и форм. Безупречный вкус интерьеров Grand Hotel Marine Garden Sochi будет вдохновлять вас двигаться вперёд!</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Концепция интерьеров"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile5" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/5-5.webp' %}" 
+                        alt="Marine Thermal SPA" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+
+
+                <h2 class="uk-modal-title modal-title">Marine Thermal SPA</h2>
+                <p>Оздоровительный СПА-комплекс «Marine Thermal SPA» наше исключительное место для незабываемых впечатлений от отдыха и абсолютного наслаждения. Вашему вниманию все инновации и тренды термального комплекса площадью более 1000 кв.м., атмосфера райского острова и морское очарование уникального песочного бассейна, выплывной обогреваемый бассейн с видом на море, детский бассейн, роскошные спа-сьюты с исключительными процедурами совместно с международными косметическим брендами, термальные и лаундж зоны, гидромассажные ванны для полного омоложения, расслабления мышц, очищением кожи и детоксикацией организма. Оздоровительный СПА-комплекс «Marine Thermal SPA» самое незабываемое спа-приключение в вашей жизни.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Marine Thermal SPA"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile6" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/6.webp' %}" 
+                        alt="Итальянский ресторан" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Итальянский ресторан</h2>
+                <p>Итальянский ресторан в культовом отеле Grand Hotel «Marine Garden Sochi» отходит от привычных шаблонов, создавая лучшее сезонное меню, полную гармонию вкусовых ощущений и гастрономию у стойки. Наш флагманский ресторан отличается эстетикой интерьеров, исключительным сервисом и лучшей коллабрацией вин мира. Каждый вечер ресторан будет настоящей музыкальной площадкой, где гости смогут насладиться музыкой лучших диджеев в неподвластной временем атмосфере. Дизайн ресторана сделан насыщенным и праздничным в темно-синих, медных и оливковых цветах. В интерьере много зонированных сложных конструкторских решений, стеновые зеркальные панели и дизайнерское освещение. Мы стремились создать дизайн, который бы удивлял и приковывал внимание наших гостей. В ресторане продолжается тема воды - в металлических фактурах стеновых панелей, зеркальных потолках, напольном мраморе и собственной айдентике отеля, которую мы интегрировали в дизайн. Совершенство, вкус и современность… Эти три слова наилучшим образом представляют наш ресторан, ваше новое место для встреч в приятной атмосфере. Кроме того, ресторан придерживается местных кулинарных традиций, предлагая космополитическую кухню по образу и подобию Италии с преобладанием красок и продуктов региона, свидетельствуя о точности вкусовых ощущений, лучшие кулинарные технологии и гастрономические концепции, призванные доставлять радость. Итальянский ресторан предлагает вам исключительное кулинарное путешествие в мир ароматов и вкусов. </p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Итальянский ресторан"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile7" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/7-7.webp' %}" 
+                        alt="Фитнес центр «Marine Fitness Club»" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Фитнес центр «Marine Fitness Club»</h2>
+                <p>Наш фитнес-центр площадью более 200 кв. м оснащён самыми современными силовыми и кардиотренажерами, разработанные лучшими мировыми фитнес-брендами. Команда профессиональных тренеров разработала широкий выбор групповых и индивидуальных программ, оздоровительных тренировок и медитативных практик. Фитнес центр «Marine Fitness Club» лучшее начало активного и полезного отдыха.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Фитнес центр «Marine Fitness Club»"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile8" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/8-8.webp' %}" 
+                        alt="Бизнес мероприятия" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Бизнес мероприятия</h2>
+                <p>В преддверии командировочного сезона бизнесмены, планирующие деловые мероприятия и встречи будут останавливаться именно в Grand Hotel «Marine Garden Sochi». Конференц зал, бизнес центр и комнаты для переговоров оборудованным по последнему слову техники и имеют весь спектр услуг соответствующих статусу бизнес отеля. Главной концепцией бизнес пространств стала его максимальная освещённость, которая была достигнута благодаря остекленным фасадам и дизайнерскому освещения спроектированному специально для Grand Hotel «Marine Garden Sochi». Шеф-повар ресторана готов организовать фуршет, кофе-брейк, дегустацию под любое корпоративное и частное мероприятие разных масштабов.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Бизнес мероприятия"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile9" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/8-8.webp' %}" 
+                        alt="Персонализированный сервис" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Персонализированный сервис</h2>
+                <p>Роскошный интерьер, комфорт и эксклюзивность сошлись в неповторимом и персонализированном сервисе для наших гостей. Консьерж служба Grand Hotel «Marine Garden Sochi» готова круглосуточно предоставить безупречный индивидуальный сервис, выполнить любое пожелание с вниманием к важнейшим деталям и создать уникальные впечатления.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Персонализированный сервис"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tile10" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/10-10.webp' %}" 
+                        alt="Лобби бар «Lounge Bar»" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Лобби бар «Lounge Bar»</h2>
+                <p>Энергетика невероятно красивого пространства «Lounge Bar» задаётся изумительным дизайном от «KASPARY INTERIORS», дополняется расслабляющим гостеприимством, коктейльной картой с авторскими напитками и закусками от шеф-повара. Нам важно создать атмосферу, которая будет способствовать расслаблению и наслаждению временем с друзьями.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Лобби бар «Lounge Bar»"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tile11" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/11-11.webp' %}" 
+                        alt="Управляющая компания Zont Hotel Group" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Управляющая компания Zont Hotel Group</h2>
+                <p>Zont Hotel Group – профессионалы эффективного управления городскими и курортными отелями с 15 летним опытом. Собственники апартаментов Marine Garden Sochi Grand Hotel 5* автоматически получают гарантированный стабильный доход от аренды недвижимости под руководством топ-менеджеров гостиничной сети под брендом Marine Garden Sochi. Компания Zont Hotel Group грамотно разрабатывает программы развития для увеличения доходности, внедряет новые сервисы и делает все объекты современными, сохраняя все традиции и уровень брендаMarine Garden Sochi Grand Hotel 5*
+                    <br>
+                    <br>После приобретения недвижимости в гостиничной комплексе Marine Garden Sochi Grand Hotel 5* покупатель не тратит время и силы на обслуживание, а также поиск платежеспособных арендаторов – всем займется управляющая компания Zont Hotel Group, выступая гарантом стабильного дохода и содержанием апартаментов. Все собственники номеров в гостиничном комплексе Marine Garden Sochi автоматически вступают в программу лояльности Zont Hotel Group и путешествуют выгодно в отелях сети – Арт Москва Войковская, Аквариум Москва, Аэротель Домодедово, Sunflower Румянцево, Sunflower Внуково, Sunflower Авеню Москва, Турист Омск, La Maison Москва.</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Управляющая компания Zont Hotel Group"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tile12" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="tile-modal-cont">
+
+                <div class="img">
+                    <img 
+                        src="{% static 'img/hotel/tile/12.webp' %}" 
+                        alt="Концепция интерьеров от «KASPARY INTERIORS»" 
+                        loading="lazy" 
+                        width="1200" 
+                        height="600"
+                    >
+                </div>
+                <h2 class="uk-modal-title modal-title">Концепция интерьеров от «KASPARY INTERIORS»</h2>
+                <p>При разработке концепции интерьеров Grand Hotel «Marine Garden Sochi» дизайнерам была поставлена не простая задача - создать продолжение архитектуры здания и незабываемую концепцию, которую город Сочи еще не видел. Команда «KASPARY INTERIORS» создала интерьеры с настоящим воплощением красоты, эстетичными дизайнерскими решениями, высочайшим уровнем комфорта и яркой индивидуальностью. В основе концепции — природа и главные ценности знаменитого российского курорта - морское побережье и горы. Используемые материалы — натуральный мрамор, премиальные породы дерева, тонированные зеркала, рифленые стекла, латунь, медь, оникс и кварцит, темные и яркие элементы, переплетение оттенков и форм. Безупречный вкус интерьеров Grand Hotel Marine Garden Sochi будет вдохновлять вас двигаться вперёд!</p>
+                <form action="{% url 'create_lead' %}" method="POST" class="s-form">
+                    {% csrf_token %}
+                    <input name="block_id" type="text" value="infrastructure"  hidden/>
+                    <input name="form_name" type="text" value="Концепция интерьеров от «KASPARY INTERIORS»"  hidden/>
+                    <h2 class="uk-modal-title mb-3">Остались вопросы?</h2>
+                    <p class="subtext">Оставьте заявку. Наш специалист свяжется с вами в ближайшее время.</p>
+                    <div class="fields">
+                        <div class="">
+                            <div class="field-label">Вас зовут?</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                               <input name="first_name" required class="uk-input" type="text"  placeholder="Вас зовут">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="field-label">Ваш телефон:</div>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                                <input name="phone" required class="uk-input phone-mask" type="text" aria-label="Not clickable icon" autocomplete="off" placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="policy">Нажимая кнопку “оставить заявку” вы соглашаетесь с политикой конфиденциальности</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+    <div id="modal-video" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body modal-type-1">
+            <button class="uk-modal-close-inside" type="button" uk-close></button>
+            <div class="video-wr">
+                <iframe src="https://www.youtube.com/embed/KMzvNGq0-v4?si=273S4-9dW2ozl0vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>

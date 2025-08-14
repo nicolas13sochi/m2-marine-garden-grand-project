@@ -1,0 +1,103 @@
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal-video");
+    const videoWrapper = modal.querySelector(".video-wr");
+    const videoSrc = "https://www.youtube.com/embed/KMzvNGq0-v4?autoplay=1";
+
+    // При открытии модалки — вставляем новый iframe
+    modal.addEventListener("show", function () {
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", videoSrc);
+      iframe.setAttribute("title", "YouTube video player");
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+
+      videoWrapper.innerHTML = ""; // очищаем старое
+      videoWrapper.appendChild(iframe);
+    });
+
+    // При закрытии модалки — удаляем iframe, чтобы остановить видео
+    modal.addEventListener("hidden", function () {
+      videoWrapper.innerHTML = "";
+    });
+  });
+
+
+  $(document).ready(function(){
+      // Cookie consent functions
+      function setCookie(name, value, days) {
+        console.log('setCookie');
+          var expires = "";
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days*24*60*60*1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+          $('#cookieModal').css('display', 'none');
+      }
+  
+      function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+  
+      // Show cookie consent modal if not accepted yet
+      if(getCookie('cookiesAccepted') === null){
+          $('#cookieModal').css('display', 'flex');
+      }
+  
+      // Handle cookie consent choices
+      $('#acceptCookies').on('click', function(){
+          setCookie('cookiesAccepted', 'true', 365);
+          console.log('acceptCookies');
+      });
+  
+      $('#rejectCookies').on('click', function(){
+          setCookie('cookiesAccepted', 'false', 365);
+          console.log('rejectCookies');
+      });
+
+      // input mask
+      $(".phone-mask").mask("+7 (999) 999-99-99");
+    //   $(".phone-mask").on('focus', function () {
+    //     const input = this;
+    //     // Установить курсор в начало
+    //     setTimeout(function () {
+    //         if (input.setSelectionRange) {
+    //         input.setSelectionRange(0, 0);
+    //         }
+    //     }, 0);
+    //     });
+
+
+    
+
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.getElementById('getAparmentPlan');
+
+      UIkit.util.on('[uk-toggle]', 'click', function (e) {
+        const trigger = e.currentTarget;
+
+        const blockId = trigger.dataset.blockId;
+        const formName = trigger.dataset.formName;
+
+        if (modal) {
+          const inputBlockId = modal.querySelector('input[name="block_id"]');
+          const inputFormName = modal.querySelector('input[name="form_name"]');
+
+          if (inputBlockId) inputBlockId.value = blockId || '';
+          if (inputFormName) inputFormName.value = formName || '';
+        }
+      });
+    });

@@ -1,0 +1,26 @@
+# .gitignore
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+/m2marinegardengrandproject/media/*
+/m2marinegardengrandproject/static/*
+/env
+/venv
+.DS_Store
+.vscode
+*.pid
+*.db
+*.rdb
+json_dumps.json
+db.sqlite3
+.env
+/m2marinegardengrandproject/media/
+/m2marinegardengrandproject/static
+/m2marinegardengrandproject/logs
+celerybeat-schedule
+*.sqlite3
+example.pdf
+*.idea
