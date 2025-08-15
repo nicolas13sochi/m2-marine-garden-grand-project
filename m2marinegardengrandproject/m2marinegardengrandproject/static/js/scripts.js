@@ -55,7 +55,12 @@
     //     });
 
 
-    
+    Fancybox.bind("[data-fancybox='gallery']", {
+      Toolbar: {
+        display: ["zoom", "close"],
+      },
+      zoom: true, // pinch-to-zoom на мобильных
+    });
 
 
     });
