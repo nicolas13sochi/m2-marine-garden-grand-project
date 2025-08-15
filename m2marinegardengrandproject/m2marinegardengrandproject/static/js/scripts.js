@@ -78,3 +78,11 @@
         }
       });
     });
+
+    document.addEventListener('touchmove', function(e) {
+  if (e.touches.length >= 2) {
+    // Два пальца — разрешаем
+    return;
+  }
+  // Одиночный тач остаётся под контролем UIkit (например, прокрутка)
+}, { passive: false });
