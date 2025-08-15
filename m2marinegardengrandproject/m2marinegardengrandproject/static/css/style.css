@@ -903,12 +903,12 @@ img {
   overflow-x: auto;
 }
 .block6 .container-genplan img {
-  width: 1240px;
-  max-width: 1240px;
+  width: 1230px;
+  max-width: 1230px;
 }
 .block6 .container-genplan svg {
   width: 1400px;
-  max-width: 1240px;
+  max-width: 1230px;
 }
 .block6 .genplan-building path:first-child {
   fill: #177EC0;
