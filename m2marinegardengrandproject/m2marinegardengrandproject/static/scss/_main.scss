@@ -22,6 +22,9 @@ h1, h2, h3, h4, h5, h6 {
 img {
   touch-action: auto !important;
 }
+.uk-modal, .uk-modal-dialog {
+  touch-action: auto; /* или pinch-zoom */
+}
 
 .w-container {
     max-width: 940px;
